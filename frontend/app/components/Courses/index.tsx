@@ -12,6 +12,7 @@ interface CourseType {
   heading: string;
   heading2: string;
   imgSrc: string;
+  seller: string;
   name: string;
   students: number;
   classes: number;
@@ -90,7 +91,7 @@ const MultipleItems: React.FC = () => {
                     <Image src={course.imgSrc} alt={course.heading} width={389} height={262} className="m-auto clipPath" />
                     <div className="absolute right-5 -bottom-2 bg-ultramarine rounded-full p-6">
                       <h3 className="text-white uppercase text-center text-sm font-medium">
-                        best <br /> seller
+                        {course.seller} <br />
                       </h3>
                     </div>
                   </div>
@@ -108,7 +109,8 @@ const MultipleItems: React.FC = () => {
                         <h3 className="text-red text-22xl font-medium">{course.rating}</h3>
                         <div className="flex">
                           {[...Array(5)].map((_, i) => (
-                            <StarIcon key={i} className="h-5 w-5 text-gold" />
+                             <StarIcon key={i} className={`h-5 w-5 ${i < course.rating ? 'text-gold' : 'text-gray-400'}`} // Cambia color según rating
+      />
                           ))}
                         </div>
                       </div>
